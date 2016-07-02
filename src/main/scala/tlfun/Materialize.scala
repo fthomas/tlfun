@@ -18,6 +18,7 @@ object Materialize {
       override def toAST: AST[R] = ast
     }
 
-  implicit def witnessMaterialize[T, S <: T](implicit w: Witness.Aux[S]): Materialize.Aux[S, T] =
+  implicit def witnessMaterialize[T, S <: T](
+      implicit w: Witness.Aux[S]): Materialize.Aux[S, T] =
     instance(AST.Literal(w.value))
 }

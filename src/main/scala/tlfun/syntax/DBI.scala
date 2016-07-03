@@ -1,8 +1,9 @@
-package tlfun
+package tlfun.syntax
 
 import shapeless.Witness
+import tlfun.{Materialize, Tree, _}
 
-trait DBI[I, T]
+trait DBI[I <: Int, T]
 
 object DBI {
   type X1[T] = DBI[W.`1`.T, T]
@@ -11,5 +12,5 @@ object DBI {
 
   implicit def dbiMaterialize[I <: Int, T](
       implicit w: Witness.Aux[I]): Materialize.Aux[DBI[I, T], T] =
-    Materialize.instance(AST.DeBruijnIndex[T](w.value))
+    Materialize.instance(Tree.DeBruijnIndex[T](w.value))
 }

@@ -24,6 +24,10 @@ libraryDependencies ++= Seq(
 
 initialCommands += """
   import tlfun._
+  import tlfun.prelude.numeric._
+  import tlfun.syntax._
+  import tlfun.syntax.DBI._
+  import tlfun.Tree._
 """
 
 reformatOnCompileSettings
